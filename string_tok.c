@@ -41,7 +41,7 @@ void tok(prog_data *prog)
 	/*Continue tokenizing & stroing tokens in prog->t*/
 	for (x = 0; prog->t[x]; x++)
 	{
-		prog->t[x] = str_dup(str_split(Null, sep));
+		prog->t[x] = str_dup(str_split(NULL, sep));
 	}
 }
 

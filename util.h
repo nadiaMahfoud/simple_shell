@@ -38,7 +38,7 @@
 			"	system environment\n" \
 			"	Prints error msg when incorrect num of args\n" \
 			"	is provided\n"
-#define HELP_TEXT "help: Provides details on builtin commands!\n" \
+#define HELP_MSG "help: Provides details on builtin commands!\n" \
 		"	Usage: help [CMD_BUILTIN]\n" \
 		"	Provides concise summaries of builyin commands\n" \
 		"	IF CMD_BUILTIN is providedd, it presents in_depth\n" \

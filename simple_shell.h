@@ -16,10 +16,6 @@
 /* FOR MSG HELP AND PROMPT */
 #include "util.h"
 
-/* SHOW HELP FUNCTION */
-
-int show_help(prog_data *prog);
-
 /* PROGRAM STRUCTURES */
 
 /**
@@ -60,6 +56,10 @@ typedef struct builtins
 
 /***********************FUNCTIONS PROTOTYPES********************/
 
+/* SHOW HELP FUNCTION */
+
+int show_help(prog_data *prog);
+
 /* INPUT READER FUNCTION */
 
 int line_reader(prog_data *prog);
@@ -77,9 +77,9 @@ void process_aliases(prog_data *prog);
 int exe_env_command(prog_data *prog);
 int init_environment(prog_data *prog);
 int unset_environment(prog_data *prog);
-int *update_environment_val(char *cle, prog_data *prog);
+char *update_environment_val(char *cle, prog_data *prog);
 int set_environment(char *cle, char *val, prog_data *prog);
-int delete_environment_key_(char *cle, prog_data *prog);
+int delete_environment_key(char *cle, prog_data *prog);
 void show_environment(prog_data *prog);
 
 /* FREE MEMORY FUNCTIONS */
