@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * exe_env_command - To Display the environment in which the shell is running
+ * exe_env_command - To Display the environment in which the shell runs
  * @prog: structure for the program's data
  * Return: 0 if success, or other number if it's declared in the arguments
  */
@@ -12,7 +12,7 @@ int exe_env_command(prog_data *prog)
 	char var_name[50] = {'\0'};
 	char *value_copy = NULL;
 
-	/* if not arguments */
+	/* if it's not arguments */
 	if (prog->t[1] == NULL)
 		show_environment(prog);
 	else
@@ -24,17 +24,17 @@ int exe_env_command(prog_data *prog)
 				/* and change its value temporally */
 				value_copy = str_dup(update_environment_val(var_name, prog));
 				if (value_copy != NULL)
-					update_environment_val(var_name, prog->t[1] + n + 1, prog);
+					set_environment(var_name, prog->t[1] + n + 1, prog);
 				/* to print the environment */
 				show_environment(prog);
 				if (update_environment_val(var_name, prog) == NULL)
-				{ /* print the var if it doesn't exist in the environment */
+				{ /* prints the var if it doesn't exist in the environment */
 					p_stdout(prog->t[1]);
 					p_stdout("\n");
 				}
 				else
-				{ /* return the previous value of the var*/
-					update_environment_val(var_name, value_copy, prog);
+				{ /* returns the previous value of the var*/
+					set_environment(var_name, value_copy, prog);
 					free(value_copy);
 				}
 				return (0);
@@ -49,13 +49,13 @@ int exe_env_command(prog_data *prog)
 }
 
 /**
- * set_environment - Displays the environment in which the shell is running
+ * set_environment - It Displays the environment in which the shell is running
  * @prog: structure for the program's data
  * Return: 0 if success, or other number if it's declared in the arguments
  */
-int set_environment(prog_data *prog)
+int init_environment(prog_data *prog)
 {
-	/* validate the  args */
+	/* To validate the  args */
 	if (prog->t[1] == NULL || prog->t[2] == NULL)
 		return (0);
 	if (prog->t[3] != NULL)
@@ -64,7 +64,7 @@ int set_environment(prog_data *prog)
 	perror(prog->cmd);
 		return (5);
 	}
-	update_environment_val(prog->t[1], prog->t[2], prog);
+	set_environment(prog->t[1], prog->t[2], prog);
 
 	return (0);
 }
