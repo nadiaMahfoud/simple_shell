@@ -46,7 +46,7 @@ void init_data(prog_data *prog, int argc, char *argv[], char **env_cpy)
 		}
 	}
 	prog->t = NULL;
-	prog->env_cpy = malloc(sizeof(char *) * 50);
+	prog->env_cpy = malloc(sizeof(char *) * 100);
 	if (env_cpy)
 	{
 		for (; env_cpy[idx]; idx++)
