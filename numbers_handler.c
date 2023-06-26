@@ -38,7 +38,7 @@ int char_occ(char *str, char *a)
 
 	while (str[y])
 	{
-		if (str[y] == a)
+		if (str[y] == *a)
 			o++;
 		y++;
 	}
