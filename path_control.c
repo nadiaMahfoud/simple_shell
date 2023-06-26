@@ -1,7 +1,5 @@
 #include "simple_shell.h"
 
-int path_valid(char *path);
-
 /**
  * find_exec - to find a program in path
  * @prog: a pointer to the program's data
@@ -11,6 +9,7 @@ int find_exec(prog_data *prog)
 {
 	int x = 0, code = 0;
 	char **direc;
+	char *tmp;
 
 	if (!prog->cmd)
 		return (2);
@@ -18,7 +17,7 @@ int find_exec(prog_data *prog)
 	if (prog->cmd[0] == '/' || prog->cmd[0] == '.')
 		return (path_valid(prog->cmd));
 	free(prog->t[0]);
-	prog->t[0] = str_cat(str_dup("/"), prog->cmd);
+	prog->t[0] = str_cat("/", prog->cmd);
 	if (!prog->t[0])
 		return (2);
 	direc = tok_environment_path(prog);/* search in the PATH */
@@ -29,16 +28,17 @@ int find_exec(prog_data *prog)
 	}
 	for (x = 0; direc[x]; x++)
 	{/* appends the function_name to path */
-		direc[x] = str_cat(direc[x], prog->t[0]);
-		code = path_valid(direc[x]);
+		tmp = str_cat(direc[x], prog->t[0]);
+		code = path_valid(tmp);
 		if (code == 0 || code == 126)
 		{/* the file is found, isn't a directory and has execute permisions*/
 			errno = 0;
 			free(prog->t[0]);
-			prog->t[0] = str_dup(direc[x]);
+			prog->t[0] = tmp;
 			free_ptrs(direc);
 			return (code);
 		}
+		free(tmp);
 	}
 	free(prog->t[0]);
 	prog->t[0] = NULL;
