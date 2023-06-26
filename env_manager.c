@@ -26,7 +26,7 @@ char *update_environment_val(char *cle, prog_data *prog)
 }
 
 /**
- * update_environment_val - overwrites the value of the environment var
+ * set_environment - overwrites the value of the environment var
  * or create it if it doesn't exist.
  * @cle: the name of the var to set
  * @val: the new value

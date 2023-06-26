@@ -49,7 +49,7 @@ int exe_env_command(prog_data *prog)
 }
 
 /**
- * set_environment - It Displays the environment in which the shell is running
+ * init_environment - It Displays the environment in which the shell is running
  * @prog: structure for the program's data
  * Return: 0 if success, or other number if it's declared in the arguments
  */

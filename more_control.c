@@ -22,7 +22,7 @@ int exit_shell(prog_data *prog)
 				return (2);
 			}
 		}
-		errno = _atoi(prog->t[1]);
+		errno = str_to_int(prog->t[1]);
 	}
 	free_data(prog);
 	exit(errno);
@@ -37,7 +37,7 @@ int exit_shell(prog_data *prog)
 
 int change_dir(prog_data *prog)
 {
-	char *home_dir = find_environment_var("HOME", prog);
+	char *home_dir = update_environment_val("HOME", prog);	
 	char *direct_old = NULL;
 	char old_direct[128] = {0};
 	int code_error = 0;
@@ -46,11 +46,11 @@ int change_dir(prog_data *prog)
 	{
 		if (str_comp(prog->t[1], "-", 0))
 		{
-			direct_old = find_environment_var("OLDPWD", prog);
+			direct_old = update_environment_val("OLDPWD", prog);
 
 			if (direct_old)
 				code_error = set_working_dir(prog, direct_old);
-			p_stdout(find_environment_var("PWD", prog));
+			p_stdout(update_environment_val("PWD", prog));
 			p_stdout("\n");
 
 			return (code_error);
@@ -92,9 +92,9 @@ int set_working_dir(prog_data *prog, char *new_direct)
 			errno = 2;
 			return (3);
 		}
-		update_environment_val("PWD", new_direct, prog);
+		set_environment("PWD", new_direct, prog);
 	}
-	update_environment_val("OLDPWD", old_direct, prog);
+	set_environment("OLDPWD", old_direct, prog);
 	return (0);
 }
 
