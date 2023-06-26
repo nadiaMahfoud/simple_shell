@@ -9,9 +9,9 @@
 
 void tok(prog_data *prog)
 {
-	char *sep = "\t"; /*the sep string used for tokenization*/
 	int x, y, idx = 2; /*iteration and counting variabless*/
 	int len = str_len(prog->in);
+	char *sep = " \t"; /*the sep string used for tokenization*/
 
 	/*Remove newline character if present*/
 	if (len > 0 && prog->in[len - 1] == '\n')
