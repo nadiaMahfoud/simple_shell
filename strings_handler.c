@@ -87,12 +87,16 @@ char *str_cat(char *dest, char *src)
 		return (NULL);
 	}
 	/*Copy the characters of the dest str to the res*/
-	for (; i < dest_len; i++)
-		res[i] = dest[i];
+	for (dest_len = 0; dest[dest_len] != '\0'; dest_len++)
+		res[dest_len] = dest[dest_len];
 	free(dest);
 	/*Copy the char of the src str to the res, starting after dest str*/
-	for (; j < src_len; j++)
-		res[dest_len + j] = src[j];
+	for (src_len = 0; src[src_len] != '\0'; src_len++)
+	{
+		res[dest_len] = src[src_len];
+		dest_len++;
+	}
+
 	/*Adding the null_terminator at the end of res*/
 	res[dest_len] = '\0';
 
