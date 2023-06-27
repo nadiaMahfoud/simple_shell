@@ -17,14 +17,14 @@ void process_var(prog_data *prog)
 	buffer_append(ligne, prog->in);
 	for (n = 0; ligne[n]; n++)
 		if (ligne[n] == '#')
-			ligne[n--] = '\0';
+			ligne[n--] = '\0';/* Expand the $? variable */
 	else if (ligne[n] == '$' && ligne[n + 1] == '?')
 	{
 		ligne[n] = '\0';
 		l_to_str(errno, exp, 10);
 		buffer_append(ligne, exp);
 		buffer_append(ligne, prog->in + n + 2);
-	}
+	} /* Expand the $$ variable */
 	else if (ligne[n] == '$' && ligne[n + 1] == '$')
 	{
 		ligne[n] = '\0';
@@ -35,7 +35,7 @@ void process_var(prog_data *prog)
 	else if (ligne[n] == '$' && (ligne[n + 1] == ' ' || ligne[n + 1] == '\0'))
 		continue;
 	else if (ligne[n] == '$')
-	{
+	{/* Expand other environment variables */
 		for (m = 1; ligne[n + m] && ligne[n + m] != ' '; m++)
 			exp[m - 1] = ligne[n + m];
 		tmp = update_environment_val(exp, prog);
