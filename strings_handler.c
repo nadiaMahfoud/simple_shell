@@ -50,9 +50,11 @@ int str_len(char *str)
 
 	if (str == NULL)
 		return (0);
-	while (*str++)
-		i++;
-	return (i);
+	while (str[i++] != '\0')
+	{
+	}
+
+	return (--i);
 }
 
 /**
