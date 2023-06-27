@@ -36,7 +36,7 @@ int p_merr(int code, prog_data *prog)
 	char buf[10] = {'\0'};
 	/*buf is temporary buffer to convert prog->ctr_exe into strin*/
 
-	l_to_str((long)prog->ctr_exe, buf, 10);
+	l_to_str((long) prog->ctr_exe, buf, 10);
 	if (code == 2 || code == 3)
 	{
 		p_stderr(prog->name);
