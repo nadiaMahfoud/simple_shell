@@ -17,7 +17,8 @@ char *update_environment_val(char *cle, prog_data *prog)
 	key_len = str_len(cle);
 	for (n = 0; prog->env_cpy[n]; n++)
 	{ /* Iterates through the environ and checks for coincidence of the name */
-		if (str_comp(cle, prog->env_cpy[n], key_len) && prog->env_cpy[n][key_len] == '=')
+		if (str_comp(cle, prog->env_cpy[n], key_len)
+				&& prog->env_cpy[n][key_len] == '=')
 			return (prog->env_cpy[n] + key_len + 1);
 
 	}

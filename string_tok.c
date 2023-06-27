@@ -39,9 +39,8 @@ void tok(prog_data *prog)
 	/* Set the command to the first token*/
 	prog->cmd = str_dup(prog->t[0]);
 	/*Continue tokenizing & stroing tokens in prog->t*/
-	for (x = 0; prog->t[x]; x++)
+	for (x = 0; prog->t[x++]; )
 	{
 		prog->t[x] = str_dup(str_split(NULL, sep));
 	}
 }
-

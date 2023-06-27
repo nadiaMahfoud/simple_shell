@@ -37,7 +37,7 @@ int exit_shell(prog_data *prog)
 
 int change_dir(prog_data *prog)
 {
-	char *home_dir = update_environment_val("HOME", prog);	
+	char *home_dir = update_environment_val("HOME", prog);
 	char *direct_old = NULL;
 	char old_direct[128] = {0};
 	int code_error = 0;
