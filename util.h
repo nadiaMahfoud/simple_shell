@@ -20,9 +20,9 @@
 #define CD_HELP "cd: Changethe directory currently in use!\n" \
 		"	Usage: cd [dir]\n" \
 		"	If no argument is provided, the command will change\n" \
-		"	to the home dir!.\n" \
+		"	to the home dir! as cd $HOME.\n" \
 		"	If the argument is a hyphen (-), the command will\n" \
-		"	change to the previous dir!.\n"
+		"	change to the previous dir! as cd $OLDPWD.\n"
 #define ENV_HELP "env_cpy: Display the environment_variables!\n" \
 		"	Usage: env_cpy\n" \
 		"	The env_cpy command shows a full list\n" \
