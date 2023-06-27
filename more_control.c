@@ -22,10 +22,10 @@ int exit_shell(prog_data *prog)
 				return (2);
 			}
 		}
-		errno = str_to_int(prog->t[1]);
+		errno = str_to_int(prog->t[1]); /* Convert the argument to an integer */
 	}
-	free_data(prog);
-	exit(errno);
+	free_data(prog); /* Free the program's data */
+	exit(errno); /*  Exit the program with the specified status */
 }
 
 /**
