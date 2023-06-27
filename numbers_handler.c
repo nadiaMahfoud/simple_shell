@@ -56,7 +56,7 @@ int char_occ(char *str, char *a)
 void l_to_str(long numb, char *str, int b)
 {
 	long q = numb;
-	char chars[] = "0123456789abcdef";
+	char chars[] = {"0123456789abcdef"};
 	int x = 0, toNeg = 0;
 
 	if (q == 0)
