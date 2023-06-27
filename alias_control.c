@@ -21,17 +21,17 @@ int display_aliases(prog_data *prog, char *alias_name)
 			if (!alias_name || (str_comp(prog->aliases[n], alias_name,
 							alias_len) && prog->aliases[n][alias_len] == '='))
 			{
-				for (m = 0; prog->aliases[n][m]; m++)
+				for (m = 0; prog->aliases[n][m]; m++)/* Cp the alias name into the buf */
 				{
 					buffer[m] = prog->aliases[n][m];
 					if (prog->aliases[n][m] == '=')
-						break;
+						break; /* Stop copying when the '=' character is encountered */
 				}
-				buffer[m + 1] = '\0';
-				buffer_append(buffer, "'");
-				buffer_append(buffer, prog->aliases[n] + m + 1);
-				buffer_append(buffer, "'\n");
-				p_stdout(buffer);
+				buffer[m + 1] = '\0'; /* Null-terminate the buffer after the alias name */
+				buffer_append(buffer, "'"); /* Append a single quote to the buffer */
+				buffer_append(buffer, prog->aliases[n] + m + 1);/* Append the val */
+				buffer_append(buffer, "'\n"); /* Append a newline char to the buffer */
+				p_stdout(buffer); /* Print the buffer containing the alias information */
 			}
 		}
 	}
