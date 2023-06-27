@@ -101,11 +101,11 @@ int buffer_append(char *buf, char *s_to_add)
 {
 	int len, n;
 
-	len = str_len(buf);
+	len = str_len(buf); /* Get the current length of the buff */
 	for (n = 0; s_to_add[n]; n++)
 	{
 		buf[len + n] = s_to_add[n];
 	}
-	buf[len + n] = '\0';
-	return (len + n);
+	buf[len + n] = '\0'; /* Add null-terminating at the end */
+	return (len + n); /* Return the new length of the buffer */
 }
