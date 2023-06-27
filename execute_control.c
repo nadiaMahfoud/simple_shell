@@ -43,9 +43,9 @@ int execute_cmd(prog_data *prog)
 		{
 			wait(&stat);
 			if (WIFEXITED(stat))
-				reval = WEXITSTATUS(stat);
+				errno = WEXITSTATUS(stat);
 			else if (WIFSIGNALED(stat))
-				reval = 128 + WTERMSIG(stat);
+				errno = 128 + WTERMSIG(stat);
 		}
 	} return (0);
 }
