@@ -106,9 +106,9 @@ void show_environment(prog_data *prog)
 {
 	int j;
 
-	for (j = 0; prog->env_cpy[j]; j++)
+	for (j = 0; prog->env_cpy[j]; j++) /* Iterate through the environment array */
 	{
-		p_stdout(prog->env_cpy[j]);
-		p_stdout("\n");
+		p_stdout(prog->env_cpy[j]); /* Print each environment variable */
+		p_stdout("\n"); /* Print a new line after each variable */
 	}
 }
