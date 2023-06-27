@@ -50,9 +50,11 @@ int str_len(char *str)
 
 	if (str == NULL)
 		return (0);
-	while (*str++)
-		i++;
-	return (i);
+	while (str[i++] != '\0')
+	{
+	}
+
+	return (--i);
 }
 
 /**
@@ -65,11 +67,15 @@ int str_len(char *str)
 char *str_cat(char *dest, char *src)
 {
 	int dest_len = 0, src_len = 0;
-	int i = 0, j = 0;
 	char *res;
+	int i = 0, j = 0;
 
+	if (dest == NULL)
+		dest = "";
 	/*Lenght of the destination string*/
 	dest_len = str_len(dest);
+	if (src == NULL)
+		src = "";
 	/*Length of the source string*/
 	src_len = str_len(src);
 	/*Allocate memory for the resukting string*/
@@ -81,11 +87,14 @@ char *str_cat(char *dest, char *src)
 		return (NULL);
 	}
 	/*Copy the characters of the dest str to the res*/
-	for (; i < dest_len; i++)
+	for (; i < dest_len ; i++)
 		res[i] = dest[i];
 	/*Copy the char of the src str to the res, starting after dest str*/
 	for (; j < src_len; j++)
+	{
 		res[dest_len + j] = src[j];
+	}
+
 	/*Adding the null_terminator at the end of res*/
 	res[dest_len + src_len] = '\0';
 

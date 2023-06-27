@@ -40,32 +40,32 @@ int p_merr(int code, prog_data *prog)
 	if (code == 2 || code == 3)
 	{
 		p_stderr(prog->name);
-		p_stderr(":");
+		p_stderr(": ");
 		p_stderr(buf);
-		p_stderr(":");
+		p_stderr(": ");
 		p_stderr(prog->t[0]);
-		p_stderr(code == 2 ? ": No such file or directory:"
-				: "; No such process");
+		p_stderr(code == 2 ? ": No such file or directory: "
+				: ": No such process ");
 		p_stderr(prog->t[1]);
 		p_stderr("\n");
 	}
 	else if (code == 127)
 	{
 		p_stderr(prog->name);
-		p_stderr(":");
+		p_stderr(": ");
 		p_stderr(buf);
-		p_stderr(":");
+		p_stderr(": ");
 		p_stderr(prog->cmd);
 		p_stderr(": command is not found\n");
 	}
 	else if (code == 126)
 	{
 		p_stderr(prog->name);
-		p_stderr(":");
+		p_stderr(": ");
 		p_stderr(buf);
-		p_stderr(":");
+		p_stderr(": ");
 		p_stderr(prog->cmd);
-		p_stderr(":Not executable\n");
+		p_stderr(": Not executable\n");
 	}
 	return (0);
 }
