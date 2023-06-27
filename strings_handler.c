@@ -67,8 +67,8 @@ int str_len(char *str)
 char *str_cat(char *dest, char *src)
 {
 	int dest_len = 0, src_len = 0;
-	int i = 0, j = 0;
 	char *res;
+	int i = 0, j = 0;
 
 	if (dest == NULL)
 		dest = "";
@@ -87,18 +87,16 @@ char *str_cat(char *dest, char *src)
 		return (NULL);
 	}
 	/*Copy the characters of the dest str to the res*/
-	for (dest_len = 0; dest[dest_len] != '\0'; dest_len++)
-		res[dest_len] = dest[dest_len];
-	free(dest);
+	for (; i < dest_len ; i++)
+		res[i] = dest[i];
 	/*Copy the char of the src str to the res, starting after dest str*/
-	for (src_len = 0; src[src_len] != '\0'; src_len++)
+	for (; j < src_len; j++)
 	{
-		res[dest_len] = src[src_len];
-		dest_len++;
+		res[dest_len + j] = src[j];
 	}
 
 	/*Adding the null_terminator at the end of res*/
-	res[dest_len] = '\0';
+	res[dest_len + src_len] = '\0';
 
 	return (res);
 }
@@ -114,12 +112,12 @@ void str_rev(char *s)
 	char rev_str;
 	int a, x = 0;
 
-	a = str_len(s) - 1;
-	while (x < a)
+	a = str_len(s);
+	for (; x < a; x++, a--)
 	{
 		rev_str = s[x];
-		s[x++] = s[a];
-		s[a--] = rev_str;
+		s[x] = s[a - 1];
+		s[a - 1] = rev_str;
 	}
 }
 
@@ -139,7 +137,7 @@ char *str_dup(char *str)
 	if (str == 0)
 		return (0);
 	size = str_len(str) + 1;
-	dup = malloc(sizeof(char) * size);
+	dup = malloc(sizeof(*str) * size);
 	if (dup == 0)
 	{
 		errno = ENOMEM; /* system is out of memmory*/
