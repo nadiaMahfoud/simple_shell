@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * str_to_int - ThE function converts string "s" to an integer value
+ * str_to_int - THiS function converts string s to an integer value
  * @s: The pointer to strng
  * Return: The converted integer (success) or 0 (failure)
  */
