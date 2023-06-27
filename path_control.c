@@ -94,16 +94,16 @@ int path_valid(char *path)
 {
 	struct stat s;
 
-	if (stat(path, &s) != -1)
+	if (stat(path, &s) != -1) /* Check if the file exists */
 	{
 		if (S_ISDIR(s.st_mode) ||  access(path, X_OK))
 		{
 			errno = 126;
 			return (126);
 		}
-		return (0);
+		return (0); /* File exists and passes checks */
 	}
-	/*if not exist the file*/
+	/*  If the file does not exist */
 	errno = 127;
 	return (127);
 }
